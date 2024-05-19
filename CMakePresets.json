@@ -1,0 +1,37 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "static",
+            "binaryDir": "${sourceDir}/target/${presetName}",
+            "cacheVariables": {
+                "USE_STATIC": "ON"
+            }
+        },
+        {
+            "name": "dynamic",
+            "binaryDir": "${sourceDir}/target/${presetName}",
+            "cacheVariables": {
+                "USE_STATIC": "OFF"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "jobs": 48,
+            "inheritConfigureEnvironment": true,
+            "hidden": true
+        },
+        {
+            "name": "static",
+            "inherits": "default",
+            "configurePreset": "static"
+        },
+        {
+            "name": "dynamic",
+            "inherits": "default",
+            "configurePreset": "dynamic"
+        }
+    ]
+}
